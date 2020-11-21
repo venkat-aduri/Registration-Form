@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * {
+                box-sizing: border-box;
+                padding:auto;
+                margin: auto;
+                text-align: center;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: white;
+            }
+            .container {
+                width: 50%;
+                padding: 16px;
+                background-color: white;
+                border: 5px solid black;
+                margin-top: 15px;
+            }
+            .resultContainer {
+                width: 50%;
+                padding: 16px;
+                background-color: white;
+                border: 5px solid black;
+                margin-top: 30px;
+                text-align: left;
+            }
+            input[type=text], input[type=password], input[type=email] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+            input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+                background: #ddd;
+                outline:none;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 20px;
+            }
+           
+
+        </style>
+
+        <script>
+            function getData() {
+                var inputUserNameRef = document.getElementById("inputUserName")
+                var inputPasswordRef = document.getElementById("inputPassword")
+                var emailRef = document.getElementById("email")
+
+                var pusernameRef = document.getElementById("pusername")
+                var ppasswordRef = document.getElementById("ppassword")
+                var pemailRef = document.getElementById("pemail")
+
+                var inputUserNameRefVal = inputUserNameRef.value
+                var inputPasswordRefVal = inputPasswordRef.value
+                var emailRefVal = emailRef.value
+
+                pusernameRef.innerText = inputUserNameRefVal
+                ppasswordRef.innerText = inputPasswordRefVal
+                pemailRef.innerText = emailRefVal
+
+                var genderElements = document.getElementsByName("gender")
+
+                for(i = 0; i < genderElements.length; i++){
+                    if(genderElements[i].checked)
+                    document.getElementById("pgender").innerText = genderElements[i].value
+                }
+
+                var qualificationVal = document.getElementById("qualification").value
+                document.getElementById("pqualification").innerText = qualificationVal
+            }
+        </script>
+        <title>RegistrationFormWithCSS</title>
+    </head>
+    <body >
+        <div class="container">
+            <form action="action_page.jsp">
+                <input type="text" id="inputUserName" placeholder="UserName">
+                <input type="password" id="inputPassword" placeholder="Password">
+                <input type="email" id="email" placeholder="Email"><br>
+                <div class="grid-container">
+                    <div style="text-align: left;">
+                        <p style="text-align: left;">Gender</p>
+                        <input type="radio" id="male" name="gender" value="Male">
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" name="gender" value="Female">
+                        <label for="female">Female</label><br>
+                        <input type="radio" id="other" name="gender" value="Others">
+                        <label for="other">Others</label><br>
+                    </div>
+                    <div>
+                        <p for="qual">Qualification </p>
+                        <select name="qual" id="qualification">
+                            <option value="MCA">MCA</option>
+                            <option value="BTech">BTech/BE</option>
+                            <option value="BSc">BS<sub>c</sub></option>
+                            <option value="MBA">MBA</option>
+                            <option value="BCom">BCom</option>
+                        </select><br>
+                    </div>
+                </div>
+                
+                <input type="button" value="Register" onclick="getData()">
+            </form>
+        </div>
+        <div class="resultContainer">
+            Result:<br>
+            UseName:<output id="pusername"></output> <br>
+            Password:<output id="ppassword"></output><br>
+            Email:<output id="pemail"></output><br>
+            Gender:<output id="pgender"></output><br>
+            Qualification:<output id="pqualification"></output>
+       
+        </div>
+
+    </body>
+</html>
